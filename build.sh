@@ -1,17 +1,11 @@
 #!/bin/bash
 
-cd "$(dirname "$0")"
+set -ex
 
 repo=$1
+version=$2
 
-docker pull sentry:latest
-docker build -t "$repo" .
-
-DIFF=$(docker inspect "$repo" | grep sha256: | diff .current - 2>&1)
-if [ "$DIFF" != "" ] ; then
-   echo "Build is different, pushing!"
-   docker push "$repo"
-   docker inspect "$repo" | grep sha256: > .current
-else
-   echo "Build is the same as previous, not pushing"
-fi
+docker build -t $repo:latest .
+docker push $repo:latest
+docker build -t $repo:$version .
+docker push $repo:$version

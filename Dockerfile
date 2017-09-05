@@ -1,5 +1,5 @@
-FROM sentry:latest
-MAINTAINER Martin Nicholls "streaky@mybrokenlogic.com"
+FROM sentry:8.19
+LABEL maintainer "Rafael Willians <rwmoraes@haoc.com.br>"
 
 # Install sentry-auth-github and remove repo access requirement from plugin because auth doesn't need it and it's intrusive otherwise
 RUN set -x \
