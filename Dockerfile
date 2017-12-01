@@ -1,4 +1,4 @@
-FROM sentry:8.20
+FROM sentry:8.21
 LABEL maintainer "Rafael Willians <rwmoraes@haoc.com.br>"
 
 # Install sentry-auth-github and remove repo access requirement from plugin because auth doesn't need it and it's intrusive otherwise
